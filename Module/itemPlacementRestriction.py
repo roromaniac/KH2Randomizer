@@ -138,7 +138,11 @@ class ItemPlacementHelpers:
     @staticmethod
     def count_pages(inventory: list[int]) -> int:
         return inventory.count(misc.TornPages.id)
-
+    
+    @staticmethod
+    def need_mining_permit(inventory: list[int]) -> bool:
+        return misc.MiningPermit.id in inventory
+    
     @staticmethod
     def need_torn_pages(count: int) -> RequirementFunction:
         return lambda inventory: ItemPlacementHelpers.count_pages(inventory) >= count

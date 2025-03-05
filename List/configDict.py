@@ -162,6 +162,7 @@ class itemType(str, Enum):
     STORYUNLOCK = "Story Unlock"
     MUNNY_POUCH = "Munny Pouch"
     MANUFACTORYUNLOCK = "Manufactory Unlock"
+    MININGPERMIT = "Mining Permiit"
     TROPHY = "OC Trophy"
     OCSTONE = "Olympus Stone"
     GAUGE = "Gauge Up"

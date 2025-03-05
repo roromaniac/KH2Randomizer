@@ -1029,6 +1029,7 @@ _all_settings = [
             str(misc.HadesCupTrophy.id): misc.HadesCupTrophy.name,
             str(misc.OlympusStone.id): misc.OlympusStone.name,
             str(misc.UnknownDisk.id): misc.UnknownDisk.name,
+            str(misc.MiningPermit.id): misc.MiningPermit.name,
         },
         shared=True,
         default=[],
@@ -2519,6 +2520,18 @@ _all_settings = [
         tooltip="""
         If enabled, the Promise Charm will be added to the item pool.
         This allows skipping TWTNW by talking to the computer in the Garden of Assemblage when you have all 3 Proofs.
+        """,
+        randomizable=True,
+    ),
+    Toggle(
+        name=settingkey.INCLUDE_COR_UNLOCK,
+        group=SettingGroup.ITEM_POOL,
+        ui_label="CoR Unlock",
+        shared=True,
+        default=False,
+        tooltip="""
+        If enabled, the Super Membership Card will be added to the item pool.
+        This blocks CoR until this unlock has been picked up. Functions similarly to the Unknown Disk for Tifa's Check.
         """,
         randomizable=True,
     ),

@@ -115,6 +115,18 @@ class Tests(unittest.TestCase):
         inventory.append(proof.ProofOfPeace.id)
         self.assertTrue(restriction(inventory))
 
+    def test_need_mining_permit(self):
+        inventory = []
+        restriction = ItemPlacementHelpers.need_mining_permit
+        self.assertFalse(restriction(inventory))
+
+        inventory.append(storyunlock.MembershipCard.id)
+        inventory.append(storyunlock.MembershipCard.id)
+        self.assertFalse(restriction(inventory))
+
+        inventory.append(misc.MiningPermit.id)
+        self.assertTrue(restriction(inventory))
+
     def test_need_forms(self):
         inventory = []
         restriction = ItemPlacementHelpers.need_forms

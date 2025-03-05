@@ -148,7 +148,7 @@ class HBLogicGraph(DefaultLogicGraph):
         if not reverse_rando:
             self.logic[START_NODE][NodeId.MarketplaceMapPopup] = ItemPlacementHelpers.hb1_check
             self.logic[NodeId.BaseballCharmPopup][NodeId.Postern] = ItemPlacementHelpers.hb2_check
-            self.logic[NodeId.DoorToDarknessPopup][NodeId.CorDepths] = ItemPlacementHelpers.need_growths
+            self.logic[NodeId.DoorToDarknessPopup][NodeId.CorDepths] = lambda inv: ItemPlacementHelpers.need_growths(inv) and ItemPlacementHelpers.need_mining_permit(inv)
             self.logic[NodeId.ThousandHeartless][NodeId.Mushroom13] = ItemPlacementHelpers.need_proof_peace
             self.logic[NodeId.ThousandHeartless][NodeId.DataDemyx] = ItemPlacementHelpers.need_forms
         else:
