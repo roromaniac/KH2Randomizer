@@ -19,6 +19,7 @@ class Items:
         full_list.extend(Items.getStatItems())
         full_list.extend(Items.getDummyFormItems())
         full_list.append(Items.getPromiseCharm())
+        full_list.append(Items.getMiningPermit())
         full_list.append(Items.getTT1Jailbreak())
         full_list.append(Items.objectiveReportItem())
         full_list.extend(Items.getSupportAbilityList())
@@ -363,6 +364,10 @@ class Items:
     @staticmethod
     def getPromiseCharm() -> KH2Item:
         return KH2Item(misc.PromiseCharm, itemRarity.MYTHIC)
+    
+    @staticmethod
+    def getMiningPermit() -> KH2Item:
+        return KH2Item(misc.MiningPermit, itemRarity.MYTHIC)
 
     @staticmethod
     def getDummyFormItems() -> list[KH2Item]:

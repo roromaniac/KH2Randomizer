@@ -52,6 +52,7 @@ class Tests(unittest.TestCase):
         seed_settings = SeedSettings()
         seed_settings.set(settingkey.STARTING_INVENTORY, [])
         seed_settings.set(settingkey.ENABLE_PROMISE_CHARM, True)
+        seed_settings.set(settingkey.INCLUDE_COR_UNLOCK, True)
 
         for randomizer in seedtest.test_seeds(seed_settings):
             self.assertEqual(0, self._starting_count(randomizer, [misc.HadesCupTrophy]))
@@ -61,6 +62,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(0, self._starting_count(randomizer, [proof.ProofOfNonexistence]))
             self.assertEqual(0, self._starting_count(randomizer, [proof.ProofOfPeace]))
             self.assertEqual(0, self._starting_count(randomizer, [misc.PromiseCharm]))
+            self.assertEqual(0, self._starting_count(randomizer, [misc.MiningPermit]))
 
             self.assertEqual(1, self._assignment_count(randomizer, [misc.HadesCupTrophy]))
             self.assertEqual(1, self._assignment_count(randomizer, [misc.OlympusStone]))
@@ -69,15 +71,17 @@ class Tests(unittest.TestCase):
             self.assertEqual(1, self._assignment_count(randomizer, [proof.ProofOfNonexistence]))
             self.assertEqual(1, self._assignment_count(randomizer, [proof.ProofOfPeace]))
             self.assertEqual(1, self._assignment_count(randomizer, [misc.PromiseCharm]))
+            self.assertEqual(1, self._assignment_count(randomizer, [misc.MiningPermit]))
 
     def test_starting_items_removed_from_pool(self):
         """ Verifies that potential starting items have the appropriate counts when starting with some. """
         seed_settings = SeedSettings()
         seed_settings.set(
             settingkey.STARTING_INVENTORY,
-            [misc.UnknownDisk.id, proof.ProofOfPeace.id, misc.PromiseCharm.id]
+            [misc.UnknownDisk.id, proof.ProofOfPeace.id, misc.PromiseCharm.id, misc.MiningPermit.id]
         )
         seed_settings.set(settingkey.ENABLE_PROMISE_CHARM, True)
+        seed_settings.set(settingkey.INCLUDE_COR_UNLOCK, True)
 
         for randomizer in seedtest.test_seeds(seed_settings):
             self.assertEqual(0, self._starting_count(randomizer, [misc.HadesCupTrophy]))
@@ -87,6 +91,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(0, self._starting_count(randomizer, [proof.ProofOfNonexistence]))
             self.assertEqual(1, self._starting_count(randomizer, [proof.ProofOfPeace]))
             self.assertEqual(1, self._starting_count(randomizer, [misc.PromiseCharm]))
+            self.assertEqual(1, self._starting_count(randomizer, [misc.MiningPermit]))
 
             self.assertEqual(1, self._assignment_count(randomizer, [misc.HadesCupTrophy]))
             self.assertEqual(1, self._assignment_count(randomizer, [misc.OlympusStone]))
@@ -95,6 +100,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(1, self._assignment_count(randomizer, [proof.ProofOfNonexistence]))
             self.assertEqual(0, self._assignment_count(randomizer, [proof.ProofOfPeace]))
             self.assertEqual(0, self._assignment_count(randomizer, [misc.PromiseCharm]))
+            self.assertEqual(0, self._assignment_count(randomizer, [misc.MiningPermit]))
 
     def test_no_starting_reports(self):
         """ Verifies that reports have the appropriate counts when starting with none and none in the shop. """

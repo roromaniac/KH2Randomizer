@@ -29,6 +29,8 @@ class CommonTrackerInfo:
         # remove any items that aren't enabled by settings
         if settings.promiseCharm:
             tracker_includes.append("PromiseCharm")
+        if settings.miningPermit:
+            tracker_includes.append("MiningPermit")
         if (
             itemType.OCSTONE in self.important_check_list
         ):  # questionable tracker_include. Consider more general alternative

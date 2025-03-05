@@ -360,6 +360,8 @@ class Randomizer:
             item_pool.extend(itertools.repeat(KH2Item(consumable.ApBoost), 50))
         if settings.promiseCharm:
             item_pool.append(Items.getPromiseCharm())
+        if settings.miningPermit:
+            item_pool.append(Items.getMiningPermit())
 
         # Remove various items from the pool based on settings
         item_ids_to_remove: list[int] = []

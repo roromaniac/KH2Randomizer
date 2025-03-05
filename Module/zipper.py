@@ -1191,6 +1191,7 @@ class SeedZip:
             + [Items.getTT1Jailbreak()]
             + [Items.objectiveReportItem()]
             + [Items.getPromiseCharm()]
+            + [Items.getMiningPermit()]
         )
         growth_abilities = [
             i.Id
