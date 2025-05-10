@@ -223,12 +223,16 @@ class Randomizer:
         acc_defense = 2
         acc_ap = 0
         acc_exp = 0
+        stats_added = 0
 
         def add_stat(choice: tuple[LevelUpStatBonus, int]):
             nonlocal acc_strength
             nonlocal acc_magic
             nonlocal acc_defense
             nonlocal acc_ap
+
+            nonlocal stats_added
+            stats_added+=1
 
             chosen_stat, stat_increase = choice
             if chosen_stat == LevelUpStatBonus.STRENGTH:
@@ -251,14 +255,16 @@ class Randomizer:
         stat_weights = [s[2] for s in settings.level_stat_pool]
         experience = settings.sora_exp()
         excluded_levels = settings.excluded_levels()
+        double_stat_levels = settings.double_stat_levels()
         for index, location in enumerate(locations):
             if index != 0:
                 stat_choices = weighted_sample_without_replacement(
                     population=level_stat_pool, weights=stat_weights, k=2
                 )
                 adder_function(stat_choices[0])
-                if location.LocationId in excluded_levels:
+                if location.LocationId in excluded_levels and location.LocationId in double_stat_levels:
                     adder_function(stat_choices[1])
+            # print(f"{location} has total {stats_added} stat growths")
             acc_exp += experience[index + 1] - experience[index]
             self.level_stats.append(
                 LevelStats(
@@ -406,9 +412,10 @@ class Randomizer:
             for chosen_report in chosen_reports:
                 item_pool.remove(chosen_report)
         if settings.shop_unlocks > 0:
-            visit_unlock_pool = [
+            # make the visit unlock pool unique so we only select a visit unlock once for the shop
+            visit_unlock_pool = list(set([
                 i for i in item_pool if i.ItemType == itemType.STORYUNLOCK
-            ]
+            ]))
             num_visit_unlocks_in_shop = min(
                 settings.shop_unlocks, len(visit_unlock_pool)
             )
@@ -693,7 +700,11 @@ class Randomizer:
             if settings.objective_pool_type==ObjectivePoolOption.HITLIST.name:
                 # remove all but one of the form objectives
                 form_objectives = [o for o in objective_pool if "Level 7" in o.Name]
-                objective_pool = [o for o in objective_pool if "Level 7" not in o.Name] + [random.choice(form_objectives)]
+                form_choice = []
+                if len(form_objectives)>0:
+                    form_choice = [random.choice(form_objectives)]
+
+                objective_pool = [o for o in objective_pool if "Level 7" not in o.Name] + form_choice
 
             if len(objective_pool) < settings.max_objectives_available:
                 raise SettingsException(f"Not enough objective locations ({len(objective_pool)}) available to allow the max number of objectives ({settings.max_objectives_available}) to be placed.")

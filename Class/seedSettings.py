@@ -687,6 +687,30 @@ _all_settings = [
         For example, setting the multiplier to 2.0 cuts the required experience to reach each level in half.
         """,
     ),
+    IntSpinner(
+        name=settingkey.DOUBLE_STAT_GROWTH_MIN_LEVEL,
+        group=SettingGroup.EXP_STATS,
+        ui_label="Double Stats Start Level",
+        standalone_label="Double Stats Start Level",
+        minimum=1,
+        maximum=99,
+        step=1,
+        shared=True,
+        default=1,
+        tooltip="When levels start to give two stat increases (when no item is given)",
+    ),
+    IntSpinner(
+        name=settingkey.DOUBLE_STAT_GROWTH_MAX_LEVEL,
+        group=SettingGroup.EXP_STATS,
+        ui_label="Double Stats End Level",
+        standalone_label="Double Stats End Level",
+        minimum=1,
+        maximum=99,
+        step=1,
+        shared=True,
+        default=99,
+        tooltip="When levels stop giving two stat increases (when no item is given)",
+    ),
     FloatSpinner(
         name=settingkey.VALOR_EXP_MULTIPLIER,
         group=SettingGroup.EXP_STATS,
@@ -919,6 +943,8 @@ _all_settings = [
             StartingMovementOption.DISABLED: "None",
             StartingMovementOption.RANDOM_3: "3 Random",
             StartingMovementOption.RANDOM_5: "5 Random",
+            StartingMovementOption.RANDOM_7: "7 Random",
+            StartingMovementOption.RANDOM_9: "9 Random",
             StartingMovementOption.LEVEL_1: "Level 1",
             StartingMovementOption.LEVEL_2: "Level 2",
             StartingMovementOption.LEVEL_3: "Level 3",
@@ -2458,7 +2484,7 @@ _all_settings = [
         standalone_label="# Visit Unlocks in Shop",
         shared=True,
         minimum=0,
-        maximum=len(storyunlock.all_individual_story_unlocks()),
+        maximum=len(storyunlock.all_story_unlocks()),
         step=1,
         default=0,
         tooltip="Adds a number of visit unlocks into the moogle shop.",
@@ -2543,6 +2569,7 @@ _all_settings = [
         default=False,
         tooltip="""
         When enabled, Sora must have certain keyblades to open chests in the different worlds.
+        Needs the KH2FM-Mods-equations19/KH2-Lua-Library mod installed
         STT     | Bond of Flame
         TT      | Oathkeeper
         HB      | Sleeping Lion

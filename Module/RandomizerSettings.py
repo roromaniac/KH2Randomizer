@@ -210,6 +210,9 @@ class RandomizerSettings:
             self.max_level_checks = 99
         else:
             raise SettingsException("Invalid Level choice")
+        
+        self.min_double_stat_level = ui_settings.get(settingkey.DOUBLE_STAT_GROWTH_MIN_LEVEL)
+        self.max_double_stat_level = ui_settings.get(settingkey.DOUBLE_STAT_GROWTH_MAX_LEVEL)
 
         self.split_levels: bool = ui_settings.get(settingkey.SPLIT_LEVELS)
         self.battle_level_rando: str = ui_settings.get(settingkey.BATTLE_LEVEL_RANDO)
@@ -592,6 +595,14 @@ class RandomizerSettings:
         self.hintable_check_types: list[str] = [
             item_type for item_type in ui_settings.get(settingkey.HINTABLE_CHECKS)
         ]
+
+        # Adjustment mostly for the tracker to address a common complaint. Would rather not get too cute and
+        # automatically change the setting in the UI. However, we should be able to safely exclude visit unlocks from
+        # being trackable if explicitly starting with all visits. This prevents the clutter in the GoA section of the
+        # tracker, where all the visit unlock items just get dumped into GoA immediately upon starting the game.
+        if "visit" in self.hintable_check_types and self.starting_visit_mode is StartingVisitMode.ALL:
+            self.hintable_check_types.remove("visit")
+
         self.spoiler_hint_values: list[str] = [
             item_type for item_type in ui_settings.get(settingkey.SPOILER_REVEAL_TYPES)
         ]
@@ -870,6 +881,9 @@ class RandomizerSettings:
             return list(range(1, 100))
         else:
             raise SettingsException(f"Incorrect level choice {max_level}")
+        
+    def double_stat_levels(self) -> list[int]:
+        return list(range(self.min_double_stat_level, self.max_double_stat_level))
 
     def sora_exp(self) -> list[int]:
         return experienceValues.get_sora_exp(
