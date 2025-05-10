@@ -349,6 +349,9 @@ class Randomizer:
             self.starting_item_ids.append(Items.getTT1Jailbreak().Id)
         if settings.objective_rando:
             self.starting_item_ids.append(Items.objectiveReportItem().Id)
+        # Add Mining Permit to starting inventory if the setting is disabled
+        if not settings.miningPermit:
+            self.starting_item_ids.append(misc.MiningPermit.id)
 
     def initial_item_pool(self, settings: RandomizerSettings) -> list[KH2Item]:
         """

@@ -386,7 +386,7 @@ class HintUtils:
             locationType.SYNTH in exclude_list
             and locationType.Puzzle in exclude_list
             and not settings.shop_hintable
-        ):
+        ) or not settings.creations_hinted:
             exclude_list.append(locationType.Creations)
 
         # make sure vanilla worlds are in the tracker
