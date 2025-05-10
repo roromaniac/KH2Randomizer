@@ -569,6 +569,7 @@ class RandomizerSettings:
         self.revealComplete: bool = ui_settings.get(settingkey.REVEAL_COMPLETE)
         self.revealMode: str = ui_settings.get(settingkey.REPORTS_REVEAL)
         self.journal_hints: str = ui_settings.get(settingkey.JOURNAL_HINTS_ABILITIES)
+        self.creations_hinted: bool = ui_settings.get(settingkey.BAN_CREATIONS_HINT)
 
         final_door_requirement = FinalDoorRequirement[ui_settings.get(settingkey.FINAL_DOOR_REQUIREMENT)]
         self.objective_rando: bool = final_door_requirement is FinalDoorRequirement.OBJECTIVES

@@ -1896,6 +1896,14 @@ _all_settings = [
         default=True,
         tooltip="If enabled, the tracker will reveal when all Important Checks in a world are found.",
     ),
+    Toggle(
+        name=settingkey.BAN_CREATIONS_HINT,
+        group=SettingGroup.HINTS,
+        ui_label="Disable Creations Hinting",
+        shared=True,
+        default=True,
+        tooltip="If enabled, even when synthesis contains Important Checks, creations will never be hinted.",
+    ),
     SingleSelect(
         name=settingkey.REPORTS_REVEAL,
         group=SettingGroup.HINTS,

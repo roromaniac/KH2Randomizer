@@ -36,6 +36,7 @@ class HintsMenu(KH2Submenu):
         # self.add_option(settingkey.ALLOW_PROOF_HINTING)
         # self.add_option(settingkey.ALLOW_REPORT_HINTING)
         self.add_option(settingkey.REVEAL_COMPLETE)
+        self.add_option(settingkey.BAN_CREATIONS_HINT)
         self.end_group()
 
         self.start_group()
