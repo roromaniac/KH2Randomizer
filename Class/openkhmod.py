@@ -4,6 +4,7 @@ from zipfile import ZipFile
 from Module.resources import resource_path
 
 import yaml, re
+import random
 
 Asset = dict[str, Any]
 

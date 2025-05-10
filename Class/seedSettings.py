@@ -1079,6 +1079,7 @@ _all_settings = [
             str(proof.ProofOfPeace.id): proof.ProofOfPeace.name,
             # TODO: misc.PromiseCharm.name is "PromiseCharm", need to see if that matters before committing to change
             str(misc.PromiseCharm.id): "Promise Charm",
+            str(misc.MiningPermit.id): misc.MiningPermit.name,
         },
         shared=True,
         default=[],
@@ -2556,7 +2557,7 @@ _all_settings = [
         shared=True,
         default=False,
         tooltip="""
-        If enabled, the Super Membership Card will be added to the item pool.
+        If enabled, the Mining Permit will be added to the item pool.
         This blocks CoR until this unlock has been picked up. Functions similarly to the Unknown Disk for Tifa's Check.
         """,
         randomizable=True,
