@@ -2559,18 +2559,6 @@ _all_settings = [
         randomizable=True,
     ),
     Toggle(
-        name=settingkey.INCLUDE_COR_UNLOCK,
-        group=SettingGroup.ITEM_POOL,
-        ui_label="CoR Unlock",
-        shared=True,
-        default=False,
-        tooltip="""
-        If enabled, the Mining Permit will be added to the item pool.
-        This blocks CoR until this unlock has been picked up. Functions similarly to the Unknown Disk for Tifa's Check.
-        """,
-        randomizable=True,
-    ),
-    Toggle(
         name=settingkey.KEYBLADES_LOCK_CHESTS,
         group=SettingGroup.SEED_MODIFIERS,
         ui_label="Keyblades Unlock Chests",

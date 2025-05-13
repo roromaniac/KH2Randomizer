@@ -1,6 +1,7 @@
 from Class import settingkey
 from Class.seedSettings import SeedSettings
 from UI.Submenus.SubMenu import KH2Submenu
+from List.inventory import misc
 
 
 class StartingMenu(KH2Submenu):

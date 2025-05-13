@@ -52,7 +52,6 @@ class Tests(unittest.TestCase):
         seed_settings = SeedSettings()
         seed_settings.set(settingkey.STARTING_INVENTORY, [])
         seed_settings.set(settingkey.ENABLE_PROMISE_CHARM, True)
-        seed_settings.set(settingkey.INCLUDE_COR_UNLOCK, True)
 
         for randomizer in seedtest.test_seeds(seed_settings):
             self.assertEqual(0, self._starting_count(randomizer, [misc.HadesCupTrophy]))
@@ -81,7 +80,6 @@ class Tests(unittest.TestCase):
             [misc.UnknownDisk.id, proof.ProofOfPeace.id, misc.PromiseCharm.id, misc.MiningPermit.id]
         )
         seed_settings.set(settingkey.ENABLE_PROMISE_CHARM, True)
-        seed_settings.set(settingkey.INCLUDE_COR_UNLOCK, True)
 
         for randomizer in seedtest.test_seeds(seed_settings):
             self.assertEqual(0, self._starting_count(randomizer, [misc.HadesCupTrophy]))

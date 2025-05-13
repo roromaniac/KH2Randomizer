@@ -349,9 +349,6 @@ class Randomizer:
             self.starting_item_ids.append(Items.getTT1Jailbreak().Id)
         if settings.objective_rando:
             self.starting_item_ids.append(Items.objectiveReportItem().Id)
-        # Add Mining Permit to starting inventory if the setting is disabled
-        if not settings.miningPermit:
-            self.starting_item_ids.append(misc.MiningPermit.id)
 
     def initial_item_pool(self, settings: RandomizerSettings) -> list[KH2Item]:
         """
@@ -369,8 +366,8 @@ class Randomizer:
             item_pool.extend(itertools.repeat(KH2Item(consumable.ApBoost), 50))
         if settings.promiseCharm:
             item_pool.append(Items.getPromiseCharm())
-        if settings.miningPermit:
-            item_pool.append(Items.getMiningPermit())
+        # PROBABLY BETTER PLACE FOR THIS
+        item_pool.append(Items.getMiningPermit())
 
         # Remove various items from the pool based on settings
         item_ids_to_remove: list[int] = []

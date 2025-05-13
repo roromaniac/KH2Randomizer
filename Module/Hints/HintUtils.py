@@ -29,8 +29,6 @@ class CommonTrackerInfo:
         # remove any items that aren't enabled by settings
         if settings.promiseCharm:
             tracker_includes.append("PromiseCharm")
-        if settings.miningPermit:
-            tracker_includes.append("MiningPermit")
         if (
             itemType.OCSTONE in self.important_check_list
         ):  # questionable tracker_include. Consider more general alternative
@@ -143,6 +141,7 @@ class WorldItems:
                     itemType.MANUFACTORYUNLOCK,
                     itemType.MUNNY_POUCH,
                     itemType.KEYBLADE,
+                    itemType.MININGPERMIT
                 ] and item.Id not in [form.AntiForm.id]:
                     # this item could have come from any world from this list
                     for vanilla_world in item_to_vanilla_world[inventory_item]:

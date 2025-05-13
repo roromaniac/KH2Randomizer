@@ -29,4 +29,4 @@ PromiseCharm = MiscItem(524, "PromiseCharm", itemType.PROMISE_CHARM)
 MunnyPouchMickey = MiscItem(535, "Munny Pouch", itemType.MUNNY_POUCH)
 HadesCupTrophy = MiscItem(537, "Hades Cup Trophy", itemType.TROPHY)
 StruggleTrophy = MiscItem(538, '"The Struggle" Trophy', itemType.KEYITEM)
-MiningPermit = MiscItem(459, "Mining Permit", itemType.MININGPERMIT) # Dummy 12
+MiningPermit = MiscItem(459, "Mining Permit", itemType.MININGPERMIT)  # Dummy 12

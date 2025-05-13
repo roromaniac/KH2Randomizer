@@ -314,7 +314,6 @@ class RandomizerSettings:
             ui_settings.get(settingkey.ABILITY_POOL)
         )
         self.promiseCharm: bool = ui_settings.get(settingkey.ENABLE_PROMISE_CHARM)
-        self.miningPermit: bool = ui_settings.get(settingkey.INCLUDE_COR_UNLOCK)
         self.auto_equip_abilities: bool = ui_settings.get(
             settingkey.AUTO_EQUIP_START_ABILITIES
         )
@@ -327,7 +326,6 @@ class RandomizerSettings:
         self.reportDepth = locationDepth(ui_settings.get(settingkey.REPORT_DEPTH))
         self.proofDepth = locationDepth(ui_settings.get(settingkey.PROOF_DEPTH))
         self.promiseCharmDepth = locationDepth(ui_settings.get(settingkey.PROMISE_CHARM_DEPTH))
-        self.miningPermitDepth = locationDepth(ui_settings.get(settingkey.STORY_UNLOCK_DEPTH))
         self.storyDepth = locationDepth(ui_settings.get(settingkey.STORY_UNLOCK_DEPTH))
 
         if softlock_option == SoftlockPreventionOption.BOTH:
@@ -737,6 +735,7 @@ class RandomizerSettings:
                 itemType.MANUFACTORYUNLOCK,
                 itemType.OCSTONE,
                 itemType.MUNNY_POUCH,
+                itemType.MININGPERMIT
             ]
 
     def create_full_seed_string(self):
